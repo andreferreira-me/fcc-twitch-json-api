@@ -1,0 +1,9 @@
+a, a:hover {
+    text-decoration: none;
+}
+
+p, h4, img {
+  position: relative;
+  top: 50%;
+  transform: perspective(1px) translateY(-50%);
+}

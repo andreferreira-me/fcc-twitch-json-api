@@ -1,0 +1,14 @@
+{
+    "version": "0.1.0",
+    "configurations": [
+    
+        {
+            "name": "Launch localhost",
+            "type": "chrome",
+            "request": "attach",
+            "port": 9222,
+            "url": "file:///E:/development-enviroment/tutorial/twitchtv-json-api/index.html",
+            "webRoot": "${workspaceRoot}/app/files"
+        }
+    ]
+}
