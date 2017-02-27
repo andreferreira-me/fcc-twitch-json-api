@@ -9,7 +9,7 @@ $("#toggleButtons input:radio").change(function () {
 });
 
 $(function () {
-    loadStreamers("online");
+    loadStreamers("all");
 });
 
 function loadStreamers(optionValue) {
@@ -28,9 +28,8 @@ function loadStreamers(optionValue) {
                         channel.status = channel.status.slice(0, 45) + " ...";
                     }
 
-                    $("#streamers").append("<div class='streamer row justify-content-center'><div class='col-1'><a href='" + twitchURL + item + "' target='_blank'><img src=" + channel.logo + " class='img-thumbnail' width='75' /></a></div><div class='col-2'><h4 class='text-center'><a href='" + twitchURL + item + "' target='_blank'>" + item + "</a></h4></div><div class='col-5'><p class='text-center'><a href='" + twitchURL + item + "' target='_blank'>" + channel.game + ": " + channel.status + "</a></p></div></div><br />");
+                    $("#streamers").append("<div class='streamer row justify-content-center'><div class='col-sm-2 text-center'><a href='" + twitchURL + item + "' target='_blank'><img src=" + channel.logo + " class='img-thumbnail img-fluid' /></a></div><div class='col-sm-4'><h4 class='text-center'><a href='" + twitchURL + item + "' target='_blank'>" + item + "</a></h4></div><div class='col-sm-6'><p class='text-center'><a href='" + twitchURL + item + "' target='_blank'>" + channel.game + ": " + channel.status + "</a></p></div></div><br />");
                 }
-                console.log(data);
             })
             .fail(function () {
                 alert("error");
@@ -43,7 +42,7 @@ function loadStreamers(optionValue) {
                 if (data.stream == null) {
                     $.get(baseURL + "/channels/" + item, function (data) {
 
-                        $("#streamers").append("<div class='streamer row justify-content-center'><div class='col-1'><a href='" + twitchURL + item + "' target='_blank'><img src=" + data.logo + " class='img-thumbnail' width='75' /></a></div><div class='col-2'><h4 class='text-center'><a href='" + twitchURL + item + "' target='_blank'>" + item + "</a></h4></div><div class='col-5'><p class='text-center'><a href='" + twitchURL + item + "' target='_blank'>Offline</a></p></div></div><br />");
+                        $("#streamers").append("<div class='streamer row justify-content-center'><div class='col-sm-2 text-center'><a href='" + twitchURL + item + "' target='_blank'><img src=" + data.logo + " class='img-thumbnail img-fluid' /></a></div><div class='col-sm-4'><h4 class='text-center'><a href='" + twitchURL + item + "' target='_blank'>" + item + "</a></h4></div><div class='col-sm-6'><p class='text-center'><a href='" + twitchURL + item + "' target='_blank'>Offline</a></p></div></div><br />");
                     })
                     .fail(function () {
                         alert("error");
@@ -55,6 +54,32 @@ function loadStreamers(optionValue) {
             })
         });
     } else {
-        console.log(optionValue);
+         $.each(streams, function (index, item) {
+            $.get(baseURL + "/streams/" + item, function (data) {
+
+                if (data.stream != null) {
+                    var channel = data.stream.channel;
+
+                    if (channel.status == null) {
+                        channel.status = "No Description";
+                    } else {
+                        channel.status = channel.status.slice(0, 45) + " ...";
+                    }
+
+                    $("#streamers").append("<div class='streamer row justify-content-center'><div class='col-sm-2 text-center'><a href='" + twitchURL + item + "' target='_blank'><img src=" + channel.logo + " class='img-thumbnail img-fluid' /></a></div><div class='col-sm-4'><h4 class='text-center'><a href='" + twitchURL + item + "' target='_blank'>" + item + "</a></h4></div><div class='col-sm-6'><p class='text-center'><a href='" + twitchURL + item + "' target='_blank'>" + channel.game + ": " + channel.status + "</a></p></div></div><br />");
+                }else{
+                     $.get(baseURL + "/channels/" + item, function (data) {
+
+                        $("#streamers").append("<div class='streamer row justify-content-center'><div class='col-sm-2 text-center'><a href='" + twitchURL + item + "' target='_blank'><img src=" + data.logo + " class='img-thumbnail img-fluid' /></a></div><div class='col-sm-4'><h4 class='text-center'><a href='" + twitchURL + item + "' target='_blank'>" + item + "</a></h4></div><div class='col-sm-6'><p class='text-center'><a href='" + twitchURL + item + "' target='_blank'>Offline</a></p></div></div><br />");
+                    })
+                    .fail(function () {
+                        alert("error");
+                    })
+                }
+            })
+            .fail(function () {
+                alert("error");
+            })
+        });
     }
 }

@@ -9,6 +9,7 @@
     <link rel="favicon" sizes="32x32" href="https://s3.amazonaws.com/freecodecamp/favicons/favicon-32x32.png">
     <link rel="favicon" sizes="96x96" href="https://s3.amazonaws.com/freecodecamp/favicons/favicon-96x96.png">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <script src="https://use.fontawesome.com/8d3532feb5.js"></script>
     <link href="css/styles.css" rel="stylesheet">
 </head>
 
@@ -18,21 +19,25 @@
             <br />
             <h1 class="text-center">Use the Twitch.tv JSON API</h1>
             <br />
+            <h4 class="text-center"><a href="https://www.freecodecamp.com/challenges/use-the-twitchtv-json-api"><i class="fa fa-free-code-camp"></i> FreeCodeCamp Challenge</a></h4>
+            <br />
             <div id="divToggleButtons" class="row justify-content-center">
-            <div id="toggleButtons" class="btn-group" data-toggle="buttons">
-                <label class="btn btn-primary active">
-                    <input type="radio" name="options" id="btnAll" autocomplete="off" value="all" checked> All
-                </label>
-                <label class="btn btn-primary">
-                    <input type="radio" name="options" id="btnOnline" autocomplete="off" value="online"> Online
-                </label>
-                <label class="btn btn-primary">
-                    <input type="radio" name="options" id="btnOffline" autocomplete="off" value="offline"> Offline
-                </label>
+                <div id="toggleButtons" class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-primary active">
+                        <input type="radio" name="options" id="btnAll" autocomplete="off" value="all" checked> All
+                    </label>
+                    <label class="btn btn-primary">
+                        <input type="radio" name="options" id="btnOnline" autocomplete="off" value="online"> Online
+                    </label>
+                    <label class="btn btn-primary">
+                        <input type="radio" name="options" id="btnOffline" autocomplete="off" value="offline"> Offline
+                    </label>
+                </div>
             </div>
-        </div>
             <br />
             <div id="streamers"></div>
+            <br />
+            <p class="text-center">Made with <i class="fa fa-heart"></i> by <a href="https://twitter.com/andreferreira_" target="_blank">@andreferreira_</a></p>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

@@ -7,3 +7,7 @@ p, h4, img {
   top: 50%;
   transform: perspective(1px) translateY(-50%);
 }
+
+.fa-heart {
+	color: #db1d1c;
+}
